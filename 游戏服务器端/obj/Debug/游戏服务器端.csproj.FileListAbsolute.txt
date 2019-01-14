@@ -1,0 +1,47 @@
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.csprojResolveAssemblyReference.cache
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.exe.config
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.exe
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.pdb
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\Common.dll
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\MySql.Data.dll
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\Common.pdb
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\MySql.Data.xml
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.exe
+E:\VS Workspace\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.pdb
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.exe.config
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.exe
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\游戏服务器端.pdb
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\Common.dll
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\MySql.Data.dll
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\Google.Protobuf.dll
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\Common.pdb
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\bin\Debug\MySql.Data.xml
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.csprojAssemblyReference.cache
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.csproj.CoreCompileInputs.cache
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.csproj.CopyComplete
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.exe
+F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\游戏服务器端\obj\Debug\游戏服务器端.pdb
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\游戏服务器端.exe.config
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\游戏服务器端.exe
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\游戏服务器端.pdb
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\Common.dll
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\MySql.Data.dll
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\Google.Protobuf.dll
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\Common.pdb
+D:\mineunity\弓箭对决\游戏服务器端\bin\Debug\MySql.Data.xml
+D:\mineunity\弓箭对决\游戏服务器端\obj\Debug\游戏服务器端.csprojAssemblyReference.cache
+D:\mineunity\弓箭对决\游戏服务器端\obj\Debug\游戏服务器端.csproj.CoreCompileInputs.cache
+D:\mineunity\弓箭对决\游戏服务器端\obj\Debug\游戏服务器端.csproj.CopyComplete
+D:\mineunity\弓箭对决\游戏服务器端\obj\Debug\游戏服务器端.exe
+D:\mineunity\弓箭对决\游戏服务器端\obj\Debug\游戏服务器端.pdb
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\游戏服务器端.exe.config
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\游戏服务器端.exe
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\游戏服务器端.pdb
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\Common.dll
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\MySql.Data.dll
+D:\mineDemo\弓箭对决Demo\游戏服务器端\bin\Debug\Common.pdb
+D:\mineDemo\弓箭对决Demo\游戏服务器端\obj\Debug\游戏服务器端.csprojAssemblyReference.cache
+D:\mineDemo\弓箭对决Demo\游戏服务器端\obj\Debug\游戏服务器端.csproj.CoreCompileInputs.cache
+D:\mineDemo\弓箭对决Demo\游戏服务器端\obj\Debug\游戏服务器端.csproj.CopyComplete
+D:\mineDemo\弓箭对决Demo\游戏服务器端\obj\Debug\游戏服务器端.exe
+D:\mineDemo\弓箭对决Demo\游戏服务器端\obj\Debug\游戏服务器端.pdb
