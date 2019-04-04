@@ -5,7 +5,7 @@ using Common;
 
 /// <summary>
 /// RequestManager
-/// 申请管理器，继承自BaseManager（管理器基类）
+/// 请求管理器，继承自BaseManager（管理器基类）
 /// </summary>
 public class RequestManager : BaseManager
 {
@@ -52,7 +52,7 @@ public class RequestManager : BaseManager
     public void HandleReponse(ActionCode actionCode, string data)
     {
         BaseRequest request = requestDict.TryGet<ActionCode, BaseRequest>(actionCode); //尝试得到处理方式对应的请求类
-
+        
         //处理异常信息
         if (request == null)
         {

@@ -53,6 +53,14 @@ public class LoginPanel : BasePanel
         transform.Find("RegisterButton").GetComponent<Button>().onClick.AddListener(OnRegisterClick); //给注册按钮添加监听
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            uiMng.PushPanel(UIPanelType.Rank);
+        }
+    }
+
     /// <summary>
     /// OnEnter
     /// 重写BasePanel中的进入

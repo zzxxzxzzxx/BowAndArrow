@@ -64,6 +64,11 @@ public class GameFacade : MonoBehaviour
     private RequestManager requestMng;
 
     /// <summary>
+    /// 排名管理器
+    /// </summary>
+    private RankManager rankMng;
+
+    /// <summary>
     /// 用户管理器
     /// </summary>
     private ClientManager clientMng;
@@ -72,6 +77,17 @@ public class GameFacade : MonoBehaviour
     /// 开始游戏标记
     /// </summary>
     private bool isEnterPlaying = false;
+
+    /// <summary>
+    /// 物品创建位置
+    /// </summary>
+    [SerializeField]
+    private GameObject ItemPositions;
+
+    /// <summary>
+    /// 排名面板标记
+    /// </summary>
+    public bool rankFlag = false;
     #endregion
 
     #region 游戏物体事件
@@ -111,6 +127,13 @@ public class GameFacade : MonoBehaviour
             
             isEnterPlaying = false; //处理完毕，等待下次标记
         }
+
+        if (rankFlag)
+        {
+            uiMng.PushPanel(UIPanelType.Rank);
+
+            rankFlag = false;
+        }
 	}
 
     /// <summary>
@@ -132,6 +155,7 @@ public class GameFacade : MonoBehaviour
     {
         //创建所有需要的管理器，把facade中介传递过去
         uiMng = new UIManager(this);
+        rankMng = new RankManager(this);
         audioMng = new AudioManager(this);
         playerMng = new PlayerManager(this);
         cameraMng = new CameraManager(this);
@@ -140,6 +164,7 @@ public class GameFacade : MonoBehaviour
 
         //运行各自管理器的初始化
         uiMng.OnInit();
+        rankMng.OnInit();
         audioMng.OnInit();
         playerMng.OnInit();
         cameraMng.OnInit();
@@ -154,6 +179,7 @@ public class GameFacade : MonoBehaviour
     private void UpdateManager()
     {
         uiMng.Update();
+        rankMng.Update();
         audioMng.Update();
         playerMng.Update();
         cameraMng.Update();
@@ -166,6 +192,7 @@ public class GameFacade : MonoBehaviour
     /// </summary>
     private void EnterPlaying()
     {
+        SetItemPositionsActive(true);
         playerMng.SpawnRoles(); //加载角色
         cameraMng.FollowRole(); //摄像机状态从漫游改变到跟随角色
     }
@@ -204,11 +231,59 @@ public class GameFacade : MonoBehaviour
     {
         //调用各个管理器的Destroy
         uiMng.OnDestroy();
+        rankMng.OnDestroy();
         audioMng.OnDestroy();
         playerMng.OnDestroy();
         cameraMng.OnDestroy();
         requestMng.OnDestroy();
         clientMng.OnDestroy();
+    }
+
+    /// <summary>
+    /// 设置创建物体位置脚本
+    /// </summary>
+    /// <param name="flag"></param>
+    public void SetItemPositionsActive(bool flag)
+    {
+        ItemPositions.SetActive(true);
+    }
+    #endregion
+
+    #region 排名管理器的方法
+    /// <summary>
+    /// 添加排名
+    /// </summary>
+    /// <param name="score">添加的分数</param>
+    public void UpdateRank(string name, int winRate)
+    {
+        rankMng.UpdateRank(name, winRate);
+    }
+
+    /// <summary>
+    /// 获取排名
+    /// </summary>
+    /// <returns>排名数组</returns>
+    public string[] GetRank()
+    {
+        return rankMng.Rank;
+    }
+
+    /// <summary>
+    /// 获取排名名称
+    /// </summary>
+    /// <returns></returns>
+    public string[] GetRankName()
+    {
+        return rankMng.RankName;
+    }
+
+    /// <summary>
+    /// 设置排名
+    /// </summary>
+    /// <param name="data">数据</param>
+    public void SetRank(string data)
+    {
+        rankMng.SetRank(data);
     }
     #endregion
 
@@ -253,6 +328,15 @@ public class GameFacade : MonoBehaviour
     public void ShowMessage(string msg)
     {
         uiMng.ShowMessage(msg);
+    }
+
+    /// <summary>
+    /// 弹出UI窗口
+    /// </summary>
+    /// <param name="type"></param>
+    public void PushPanel(UIPanelType type)
+    {
+        uiMng.PushPanel(type);
     }
     #endregion
 
@@ -342,6 +426,32 @@ public class GameFacade : MonoBehaviour
     public void UpdateResult(int totalCount, int winCount)
     {
         playerMng.UpdateResult(totalCount, winCount);
+    }
+
+    /// <summary>
+    /// 设置角色攻击力
+    /// </summary>
+    /// <param name="rt">角色类型</param>
+    /// <param name="attack">攻击力</param>
+    public void AddAttack(RoleType rt, int attack)
+    {
+        playerMng.AddAttack(rt, attack);
+        StartCoroutine(ResumeAttack(rt, attack));
+    }
+
+    #endregion
+
+    #region 私有方法
+    /// <summary>
+    /// 恢复攻击力协程
+    /// </summary>
+    /// <param name="rt">角色类型</param>
+    /// <param name="attack">恢复攻击力</param>
+    /// <returns></returns>
+    private IEnumerator ResumeAttack(RoleType rt, int attack)
+    {
+        yield return new WaitForSeconds(60);
+        playerMng.AddAttack(rt, -attack);
     }
     #endregion
 }

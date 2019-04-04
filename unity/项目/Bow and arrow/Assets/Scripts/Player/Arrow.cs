@@ -34,6 +34,16 @@ public class Arrow : MonoBehaviour
     /// 刚体组件
     /// </summary>
     private Rigidbody rgd;
+
+    /// <summary>
+    /// 能造成的伤害
+    /// </summary>
+    public int damage;
+
+    /// <summary>
+    /// 强化攻击力标记
+    /// </summary>
+    public bool addDamageFlag = false;
     #endregion
 
     #region 游戏物体事件
@@ -44,6 +54,7 @@ public class Arrow : MonoBehaviour
     private void Start ()
     {
         rgd = GetComponent<Rigidbody>(); //获取刚体组件
+        gameObject.GetComponent<Light>().enabled = addDamageFlag;
 	}
 
     /// <summary>
@@ -52,7 +63,7 @@ public class Arrow : MonoBehaviour
     /// </summary>
     private void Update ()
     {
-        rgd.MovePosition( transform.position+ transform.forward * speed * Time.deltaTime); //
+        rgd.MovePosition(transform.position+ transform.forward * speed * Time.deltaTime); //
 	}
 
     /// <summary>
@@ -72,7 +83,7 @@ public class Arrow : MonoBehaviour
                 bool playerIsLocal = other.GetComponent<PlayerInfo>().isLocal; 
                 if (isLocal != playerIsLocal)
                 {
-                    GameFacade.Instance.SendAttack(Random.Range(10, 20)); //伤害申请
+                    GameFacade.Instance.SendAttack(damage); //伤害申请
                 }
             }
         }

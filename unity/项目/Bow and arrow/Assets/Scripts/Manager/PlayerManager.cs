@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Common;
+using UnityEngine.AI;
 
 /// <summary>
 /// PlayerManager
-/// 角色管理器，继承自BaseManager（管理器基类）
+/// 角色信息管理器，继承自BaseManager（管理器基类）
 /// </summary>
 public class PlayerManager : BaseManager
 {
@@ -63,7 +64,7 @@ public class PlayerManager : BaseManager
     private GameObject remoteRoleGameObject;
 
     /// <summary>
-    /// 设计申请
+    /// 射击申请
     /// </summary>
     private ShootRequest shootRequest;
 
@@ -101,7 +102,6 @@ public class PlayerManager : BaseManager
         {
             GameObject go= GameObject.Instantiate(rd.RolePrefab, rd.SpawnPosition, Quaternion.identity); //实例化角色
             go.tag = "Player"; //更改游戏物体标签为Player
-
             //区分本地角色和远程角色
             if (rd.RoleType == currentRoleType)
             {
@@ -121,6 +121,8 @@ public class PlayerManager : BaseManager
     public void AddControlScript()
     {
         currentRoleGameObject.AddComponent<PlayerMove>(); //给本地角色添加角色移动脚本
+        currentRoleGameObject.GetComponent<PlayerMove>().characterController = currentRoleGameObject.GetComponent<CharacterController>();
+        currentRoleGameObject.GetComponent<PlayerMove>().agent = currentRoleGameObject.GetComponent<NavMeshAgent>();
         PlayerAttack playerAttack = currentRoleGameObject.AddComponent<PlayerAttack>(); //给本地角色添加角色攻击脚本
         RoleType rt = currentRoleGameObject.GetComponent<PlayerInfo>().roleType; //获取角色类型
         RoleData rd = GetRoleData(rt); //取得角色类型信息
@@ -160,8 +162,10 @@ public class PlayerManager : BaseManager
     public void Shoot(GameObject arrowPrefab,Vector3 pos,Quaternion rotation)
     {
         facade.PlayNormalSound(AudioManager.Sound_Timer); //播放射击声音
-        GameObject.Instantiate(arrowPrefab, pos, rotation) //实例化箭
-            .GetComponent<Arrow>().isLocal = true; //设置箭的脚本属性为本地
+        GameObject obj = GameObject.Instantiate(arrowPrefab, pos, rotation); //实例化箭
+        obj.GetComponent<Arrow>().damage = GetRoleData(currentRoleType).Attack; //设置伤害
+        obj.GetComponent<Arrow>().addDamageFlag = GetRoleData(currentRoleType).AddDamageFlag; //设置标记
+        obj.GetComponent<Arrow>().isLocal = true; //设置箭的脚本属性为本地
         shootRequest.SendRequest(arrowPrefab.GetComponent<Arrow>().roleType, pos, rotation.eulerAngles); //发出射击申请
     }
 
@@ -174,8 +178,10 @@ public class PlayerManager : BaseManager
     public void RemoteShoot(RoleType rt, Vector3 pos, Vector3 rotation)
     {
         GameObject arrowPrefab = GetRoleData(rt).ArrowPrefab; //获取箭的预设体
-        Transform transform = GameObject.Instantiate(arrowPrefab). //实例化箭
-            GetComponent<Transform>();
+        GameObject obj = GameObject.Instantiate(arrowPrefab); //实例化箭
+        obj.GetComponent<Arrow>().damage = GetRoleData(rt).Attack; //设置伤害
+        obj.GetComponent<Arrow>().addDamageFlag = GetRoleData(currentRoleType).AddDamageFlag; //设置标记
+        Transform transform = obj.GetComponent<Transform>();
         //修改箭的位置和四元角
         transform.position = pos; 
         transform.eulerAngles = rotation;
@@ -199,6 +205,7 @@ public class PlayerManager : BaseManager
     {
         userData.TotalCount = totalCount; //更新userData总场数
         userData.WinCount = winCount; //更新userData胜利场数
+        GameFacade.Instance.UpdateRank(userData.Username, winCount * 100 / totalCount);
     }
 
     /// <summary>
@@ -217,6 +224,21 @@ public class PlayerManager : BaseManager
         GameObject.Destroy(remoteRoleGameObject); //销毁远程角色游戏物体
         shootRequest = null; //断开设计申请引用
         attackRequest = null; //断开攻击申请引用
+        GameFacade.Instance.SetItemPositionsActive(false);
+    }
+
+    /// <summary>
+    /// 设置角色伤害
+    /// </summary>
+    /// <param name="rt">角色类型</param>
+    /// <param name="attack">攻击力</param>
+    public void AddAttack(RoleType rt, int attack)
+    {
+        RoleData rtdata = GetRoleData(rt);
+        Debug.Log(attack);
+        rtdata.Attack += attack;
+        if (attack >= 0) rtdata.AddDamageFlag = true;
+        else rtdata.AddDamageFlag = false;
     }
     #endregion
 

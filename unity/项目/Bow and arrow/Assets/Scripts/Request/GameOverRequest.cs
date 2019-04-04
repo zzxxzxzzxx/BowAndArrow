@@ -48,6 +48,7 @@ public class GameOverRequest : BaseRequest
     /// <param name="data">服务器发送的响应数据</param>
     public override void OnResponse(string data)
     {
+        
         returnCode = (ReturnCode)int.Parse(data); //更新动作的类型
         isGameOver = true; //改变游戏结束标记
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /// <summary>
 /// PlayerMove
@@ -9,6 +10,9 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     #region 成员变量
+
+    public float jumpSpeed = 100.0F;
+    public float gravity = 100.0F;
     /// <summary>
     /// 
     /// </summary>
@@ -23,6 +27,13 @@ public class PlayerMove : MonoBehaviour
     /// 角色的动画
     /// </summary>
     private Animator anim;
+
+    /// </summary>
+    ///网格导航代理
+    /// </summary>
+    public NavMeshAgent agent;
+
+    public CharacterController characterController;
     #endregion
 
     #region 游戏物体事件
@@ -48,9 +59,21 @@ public class PlayerMove : MonoBehaviour
         //有变化才去更新
         if (Mathf.Abs(h) > 0 || Mathf.Abs(v) > 0)
         {
-            transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime, Space.World); //世界坐标去更新位置变化
+            Vector3 moveDirection = Vector3.zero;
+            if (characterController.isGrounded)
+            {
+                moveDirection = new Vector3(h, 0, v);
+                //moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection *= speed;
+                if (Input.GetButton("Jump"))
+                    moveDirection.y = jumpSpeed;
+                transform.rotation = Quaternion.LookRotation(new Vector3(h, 0, v)); //跟新角色转向
+            }
+            moveDirection.y -= gravity * Time.deltaTime;
+            characterController.Move(moveDirection * Time.deltaTime);
+            //agent.SetDestination(transform.position + new Vector3(h, 0, v) * speed);
+            //transform.Translate(new Vector3(h, 0, v) * speed * Time.deltaTime, Space.World); //世界坐标去更新位置变化
 
-            transform.rotation = Quaternion.LookRotation(new Vector3(h, 0, v)); //跟新角色转向
 
             //选取变化大的方向作为移动量
             float res = Mathf.Max(Mathf.Abs(h), Mathf.Abs(v)); 

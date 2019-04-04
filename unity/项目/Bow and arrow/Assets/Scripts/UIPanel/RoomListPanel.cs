@@ -43,6 +43,11 @@ public class RoomListPanel : BasePanel
     private CreateRoomRequest createRoomRequest;
 
     /// <summary>
+    /// 刷新排名脚本
+    /// </summary>
+    private RankRequest rankRequest;
+
+    /// <summary>
     /// 加入房间申请脚本
     /// </summary>
     private JoinRoomRequest joinRoomRequest;
@@ -77,7 +82,9 @@ public class RoomListPanel : BasePanel
         transform.Find("RoomList/CloseButton").GetComponent<Button>().onClick.AddListener(OnCloseClick); //监听关闭按钮
         transform.Find("RoomList/CreateRoomButton").GetComponent<Button>().onClick.AddListener(OnCreateRoomClick); //监听创建房间按钮
         transform.Find("RoomList/RefreshButton").GetComponent<Button>().onClick.AddListener(OnRefreshClick); //监听刷新按钮
+        transform.Find("BattleRes/RankButton").GetComponent<Button>().onClick.AddListener(OnRankClick); //监听刷新按钮
 
+        rankRequest = GetComponent<RankRequest>(); //获取刷新排名申请脚本
         listRoomRequest = GetComponent<ListRoomRequest>(); //获取刷新房间列表申请脚本
         createRoomRequest = GetComponent<CreateRoomRequest>(); //获取创建房间申请脚本
         joinRoomRequest = GetComponent<JoinRoomRequest>(); //获取加入房间申请脚本
@@ -229,6 +236,12 @@ public class RoomListPanel : BasePanel
     private void OnRefreshClick()
     {
         listRoomRequest.SendRequest(); //发出刷新房间列表申请
+    }
+
+    private void OnRankClick()
+    {
+        rankRequest.SendRequest();
+        //GameFacade.Instance.PushPanel(UIPanelType.Rank);
     }
 
     /// <summary>

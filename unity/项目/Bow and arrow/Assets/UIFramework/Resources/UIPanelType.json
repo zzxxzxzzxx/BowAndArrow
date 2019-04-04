@@ -20,7 +20,10 @@
 "path":"UIPanel/RoomPanel"},
 
 {"panelTypeString":"Game",
-"path":"UIPanel/GamePanel"}
+"path":"UIPanel/GamePanel"},
+
+{"panelTypeString":"Rank",
+"path":"UIPanel/RankPanel"}
 
 
 ]

@@ -46,5 +46,10 @@ public enum UIPanelType
     /// <summary>
     /// 游戏
     /// </summary>
-    Game
+    Game,
+
+    /// <summary>
+    /// 排名
+    /// </summary>
+    Rank
 }

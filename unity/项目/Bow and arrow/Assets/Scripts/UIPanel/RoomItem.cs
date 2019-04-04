@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// RoomItem
-/// 创建好的游戏房间面板，继承自BasePanel（面板基类）
+/// 游戏房间窗口，继承自BasePanel（面板基类）
 /// </summary>
 public class RoomItem : MonoBehaviour
 {

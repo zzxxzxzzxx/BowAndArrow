@@ -18,7 +18,9 @@ public class RoleData
     /// <param name="arrowPath">箭预设体路径</param>
     /// <param name="explosionPath">爆炸粒子特效路径</param>
     /// <param name="spawnPos">角色的创建位置</param>
-    public RoleData(RoleType roleType, string rolePath, string arrowPath, string explosionPath, Transform spawnPos)
+    /// <param name="attack">攻击力</param>
+    /// <param name="flag">强化攻击力标记</param>
+    public RoleData(RoleType roleType, string rolePath, string arrowPath, string explosionPath, Transform spawnPos, int attack = 10, bool flag = false)
     {
         this.RoleType = roleType;
         this.RolePrefab = Resources.Load(PREFIX_PREFAB + rolePath) as GameObject;
@@ -26,6 +28,8 @@ public class RoleData
         this.ExplostionEffect = Resources.Load(PREFIX_PREFAB + explosionPath) as GameObject;
         ArrowPrefab.GetComponent<Arrow>().explosionEffect = ExplostionEffect;
         this.SpawnPosition = spawnPos.position;
+        this.Attack = attack;
+        this.AddDamageFlag = flag;
     }
     #endregion
 
@@ -69,5 +73,15 @@ public class RoleData
     /// 私有set
     /// </summary>
     public GameObject ExplostionEffect { get; private set; }
+
+    /// <summary>
+    /// 攻击力
+    /// </summary>
+    public int Attack { get; set; }
+
+    /// <summary>
+    /// 强化攻击力标记
+    /// </summary>
+    public bool AddDamageFlag { get; set; }
     #endregion
 }
