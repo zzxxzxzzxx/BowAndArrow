@@ -29,6 +29,11 @@ namespace Common
         /// 游戏
         /// </summary>
         Game,
+
+        /// <summary>
+        /// 排名
+        /// </summary>
+        Rank
     }
     #endregion
 }

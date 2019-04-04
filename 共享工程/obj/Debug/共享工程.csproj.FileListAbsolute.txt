@@ -9,3 +9,8 @@ F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器�
 F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\共享工程\obj\Debug\Common.dll
 F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\共享工程\obj\Debug\Common.pdb
 F:\BaiduNetdiskDownload\素材、源码工程、PPT\《丛林战争》服务器端\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\直接利用Socket TCP开发网络游戏 - CSharp（Unity5.6）\共享工程\obj\Debug\共享工程.csprojAssemblyReference.cache
+D:\项目\BowAndArrow\共享工程\bin\Debug\Common.dll
+D:\项目\BowAndArrow\共享工程\bin\Debug\Common.pdb
+D:\项目\BowAndArrow\共享工程\obj\Debug\共享工程.csproj.CoreCompileInputs.cache
+D:\项目\BowAndArrow\共享工程\obj\Debug\Common.dll
+D:\项目\BowAndArrow\共享工程\obj\Debug\Common.pdb

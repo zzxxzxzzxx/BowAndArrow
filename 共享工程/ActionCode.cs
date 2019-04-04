@@ -93,7 +93,12 @@ namespace Common
         /// <summary>
         /// 退出游戏
         /// </summary>
-        QuitBattle
+        QuitBattle,
+
+        /// <summary>
+        /// 更新排名
+        /// </summary>
+        UpdateRank
     }
     #endregion
 }
