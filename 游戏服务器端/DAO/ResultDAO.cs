@@ -36,19 +36,60 @@ namespace GameServer.DAO
                     int id = reader.GetInt32("id"); //读取语句中的用户id信息
                     int totalCount = reader.GetInt32("totalcount"); //读取语句中的总场数信息
                     int winCount = reader.GetInt32("wincount"); //读取语句中的胜利场数信息
+                    int winRate = reader.GetInt32("winrate");
 
-                    Result res = new Result(id, userId, totalCount, winCount); //组合result模型
+                    Result res = new Result(id, userId, totalCount, winCount, winRate); //组合result模型
                     return res; 
                 }
                 else
                 {
-                    Result res = new Result(-1, userId, 0, 0); //新建result
+                    Result res = new Result(-1, userId, 0, 0, 0); //新建result
                     return res;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("在GetResultByUserid的时候出现异常：" + e); //异常处理
+            }
+            finally
+            {
+                if (reader != null) reader.Close(); //关闭本次读取
+            }
+            return null;
+        }
+
+        public Result[] SortRankByRate(MySqlConnection conn)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                MySqlCommand cmd = null;
+                cmd = new MySqlCommand("select * from result order by winrate DESC, wincount DESC", conn);
+                reader = cmd.ExecuteReader(); //执行语句
+                int i = 1;
+                Result[] res = new Result[101];
+                while (reader.Read() && i <= 100)
+                {
+                    int id = reader.GetInt32("id"); //读取语句中的用户id信息
+                    int userId = reader.GetInt32("userId");
+                    int winRate = reader.GetInt32("winrate");
+                    int totalCount = reader.GetInt32("totalcount"); //读取语句中的总场数信息
+                    int winCount = reader.GetInt32("wincount"); //读取语句中的胜利场数信息
+                    //Console.WriteLine("i = " + i +
+                    //                  ", id = " + id +
+                    //                  ", userId = " + userId +
+                    //                  ", winRate = " + winRate +
+                    //                  ", totalCount = " + totalCount +
+                    //                  ", winCount = " + winCount);
+                    res[i] = new Result(id, userId, totalCount, winCount, winRate);
+                    i++;
+                }
+                return res;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("在SortRankByRate的时候出现异常：" + e); //异常处理
             }
             finally
             {
@@ -76,12 +117,13 @@ namespace GameServer.DAO
                 else
                 {
                     //更新result
-                    cmd = new MySqlCommand("update result set totalcount=@totalcount,wincount=@wincount where userid=@userid ", conn);
+                    cmd = new MySqlCommand("update result set totalcount=@totalcount,wincount=@wincount,winrate=@winrate where userid=@userid ", conn);
                 }
                 //采用Parameters，防止用户名或密码被恶意添加sql语句
                 cmd.Parameters.AddWithValue("totalcount", res.TotalCount);
                 cmd.Parameters.AddWithValue("wincount", res.WinCount);
                 cmd.Parameters.AddWithValue("userid", res.UserId);
+                cmd.Parameters.AddWithValue("winrate", res.WinRate);
 
                 cmd.ExecuteNonQuery(); //执行语句
                 if (res.Id <= -1)

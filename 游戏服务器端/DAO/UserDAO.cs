@@ -90,6 +90,33 @@ namespace GameServer.DAO
             return false; 
         }
 
+        public string GetUserNameByUserId(MySqlConnection conn, int id)
+        {
+            MySqlDataReader reader = null;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("select username from user where id = @id", conn); //sql语句
+                //采用Parameters，防止用户名或密码被恶意添加sql语句                                                                                                            //采用Parameters，防止用户名或密码被恶意添加sql语句
+                cmd.Parameters.AddWithValue("id", id);
+
+                reader = cmd.ExecuteReader(); //执行语句
+                if (reader.Read())
+                {
+                    string name = reader.GetString("username"); //从返回值中读取出用户id和其他属性组成user模型进行返回
+                    return name;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("在GetUserNameByUserId的时候出现异常：" + e); //异常处理
+            }
+            finally
+            {
+                if (reader != null) reader.Close(); //关闭本次读取
+            }
+            return "";
+        }
+
         /// <summary>
         /// 添加用户
         /// </summary>

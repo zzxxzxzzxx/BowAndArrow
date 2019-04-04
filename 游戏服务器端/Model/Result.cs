@@ -20,12 +20,13 @@ namespace GameServer.Model
         /// <param name="userId">用户id</param>
         /// <param name="totalCount">总场数</param>
         /// <param name="winCount">胜利场数</param>
-        public Result(int id, int userId,int totalCount,int winCount)
+        public Result(int id, int userId,int totalCount,int winCount, int winRate)
         {
             this.Id = id;
             this.UserId = userId;
             this.TotalCount = totalCount;
             this.WinCount = winCount;
+            this.WinRate = winRate;
         }
         #endregion
 
@@ -57,6 +58,12 @@ namespace GameServer.Model
         /// 共有set
         /// </summary>
         public int WinCount { get; set; }
+
+        /// <summary>
+        /// 胜率属性
+        /// 共有get
+        /// 共有set        /// </summary>
+        public int WinRate { get; set; }
         #endregion
     }
 }

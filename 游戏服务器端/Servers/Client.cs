@@ -206,6 +206,13 @@ namespace GameServer.Servers
             UpdateResultToDB(isVictory); //向数据库更新结果
             UpdateResultToClient(); //向客户端更新结果
         }
+
+        public void UpdateRank()
+        {
+            Result[] res = resultDAO.SortRankByRate(mysqlConn);
+            string s = GetRankString(res);
+            Send(ActionCode.UpdateRank, s);
+        }
         #endregion
 
         #region 私有方法
@@ -264,7 +271,29 @@ namespace GameServer.Servers
             {
                 result.WinCount++;
             }
+            result.WinRate = result.WinCount * 100 / result.TotalCount;
             resultDAO.UpdateOrAddResult(mysqlConn, result); //利用DAO更改数据库数据
+        }
+
+        private string GetRankString(Result[] rank)
+        {
+            UserDAO user = new UserDAO();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 1; i < rank.Length; i++)
+            {
+                if (rank[i] == null) break;
+                sb.Append(user.GetUserNameByUserId(mysqlConn, rank[i].Id) + "," + rank[i].WinRate + "|");
+            }
+            if (sb.Length == 0)
+            {
+                //没有房间
+                sb.Append("0");
+            }
+            else
+            {
+                sb.Remove(sb.Length - 1, 1); //把最后一个“|”去掉
+            }
+            return sb.ToString();
         }
 
         /// <summary>

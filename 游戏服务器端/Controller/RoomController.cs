@@ -121,6 +121,11 @@ namespace GameServer.Controller
                 return ((int)ReturnCode.Success).ToString(); //返回响应信息
             }
         }
+
+        public void UpdateRank(string data, Client client, Server server)
+        {
+            client.UpdateRank();
+        }
         #endregion
     }
 }
